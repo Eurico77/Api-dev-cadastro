@@ -38,7 +38,17 @@ class HouseController {
     const { description, price , location , status } = req.body;
     const {user_id} = req.headers;
 
-    res.json({ok: true})
+    const houses = await House.updateOne({_id: house_id}, {
+      user: user_id,
+      thumbnail: filename,
+      description,
+      price,
+      location,
+      status
+
+    })
+
+   
   }
 }
 
