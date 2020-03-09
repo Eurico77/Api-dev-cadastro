@@ -46,7 +46,9 @@ class HouseController {
       location,
       status
 
-    })
+    });
+
+    return res.send();
 
    
   }
