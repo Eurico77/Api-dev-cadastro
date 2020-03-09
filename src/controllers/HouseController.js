@@ -1,6 +1,11 @@
 import House from "../models/House";
 
 class HouseController {
+  async index(req,res){
+    return res.json({ok: true})
+  }  
+
+
   async store(req, res) {
 
     const { filename } = req.file;
