@@ -40,7 +40,7 @@ class HouseController {
       return res.status(401).json({ error: "Não autorizado" });
     }
 
-    await House.updateOne(
+    await House.updateOne(  
       { _id: house_id },
       {
         user: user_id,
@@ -55,7 +55,16 @@ class HouseController {
     return res.send();
   }
 
-  async destroy(req, res) {}
+  async destroy(req, res) {
+
+    const { house_id } = req.body;
+    const { user_id } = req.headers;
+
+    await House.findByIdAndDelete({_id: house_id});
+
+    return res.json({message: 'excluida com sucesso!'})
+
+  }
 }
 
 export default new HouseController();
